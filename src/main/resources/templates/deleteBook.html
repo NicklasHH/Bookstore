@@ -13,17 +13,13 @@
 			<th>ISBN</th>
 			<th>Year</th>
 		</tr>
-
-		<!-- author, title, isbn, publicationYear -->
 		<tr th:each="books : ${books}">
 			<td th:text="${books.author}"></td>
 			<td th:text="${books.title}"></td>
 			<td th:text="${books.isbn}"></td>
 			<td th:text="${books.publicationYear}"></td>
-			<td><a th:href="@{/delete/{id}(id=${books.id})}">Delete</a></td>
+
 		</tr>
-		
 	</table>
-	<a href="/addbook">Add book</a>
 </body>
 </html>
