@@ -1,23 +1,12 @@
 package k23.Bookstore.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import k23.Bookstore.domain.BookRepository;
 
 @Controller
 public class BookController {
+	@Autowired
+	BookRepository bookRepository;
 
-	@GetMapping("index")
-	@ResponseBody
-	public String Tervehdi(@RequestParam(name = "name", required=false) String name){
-		if (name == null) {
-			return "Moikka! syötä ihmeessä nimesi seuraavalla tavalla: "
-					+ "<br> http://localhost:8080/index?name=nimesi";
-		}
-		
-		else {
-			return "Moikka " + name + "!";
-		}
-	}
 }
