@@ -23,23 +23,28 @@ public class BookController {
 		return "booklist";
 	}
 
-	@GetMapping("addbook")
+	@GetMapping("addBook")
 	public String addBook(Model model) {
-		model.addAttribute("addbook", new Book());
-		return "addbook";
+		model.addAttribute("addBook", new Book());
+		return "addBook";
 	}
 
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public String deleteBook(@PathVariable("id") Long id, Model model) {
+		bookRepository.deleteById(id);
+		return "redirect:../booklist";
+	}
+
+	@GetMapping("/editBook/{id}")
+	public String editBook(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("editBook", bookRepository.findById(id));
+		return "editBook";
+	}
+	
 	@PostMapping("saveBook")
 	public String saveBook(Book book) {
 		bookRepository.save(book);
 		return "redirect:booklist";
-	}
-	
-	
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-	public String deleteBook(@PathVariable("id") Long id, Model model){ 
-	bookRepository.deleteById(id);
-	return "redirect:../booklist";
 	}
 
 }

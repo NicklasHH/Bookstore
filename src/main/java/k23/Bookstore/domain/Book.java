@@ -12,14 +12,17 @@ public class Book {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	private String title, author, publicationYear, isbn, price;
+	private String title, author, isbn;
+	private double price;
+	private int publicationYear;
+	
 
 	public Book() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Book(String title, String author, String publicationYear, String isbn, String price) {
+	public Book(String title, String author, int publicationYear, String isbn, double price) {
 		super();
 		this.title = title;
 		this.author = author;
@@ -44,11 +47,11 @@ public class Book {
 		this.author = author;
 	}
 
-	public String getPublicationYear() {
+	public int getPublicationYear() {
 		return publicationYear;
 	}
 
-	public void setPublicationYear(String publicationYear) {
+	public void setPublicationYear(int publicationYear) {
 		this.publicationYear = publicationYear;
 	}
 
@@ -60,11 +63,11 @@ public class Book {
 		this.isbn = isbn;
 	}
 
-	public String getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 

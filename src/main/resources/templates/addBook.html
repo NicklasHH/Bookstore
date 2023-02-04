@@ -7,9 +7,11 @@
 <body>
 	<h1>Books</h1>
 	<div>
-		<form th:object="${addbook}" th:action="@{saveBook}" action="#" method="post">
+		<form th:object="${addBook}" th:action="@{saveBook}" action="#" method="post">
 		
-			<!-- author, title, isbn, publicationYear -->
+			<!-- string title, author, isbn -->
+			<!-- double price -->
+			<!-- int publicationYear -->
 			<div>
 				<label>Author</label>
 				<input type="text" th:field="*{author}" />
@@ -24,7 +26,7 @@
 			</div>
 			<div>
 				<label>Year</label>
-				<input type="text" th:field="*{publicationYear}" />
+				<input type="number" th:field="*{publicationYear}" />
 			</div>
 			<input type="submit" value="Save"></input>
 		</form>
