@@ -1,35 +1,46 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+
 <meta charset="UTF-8">
 <title>Add new book</title>
 </head>
 <body>
 	<h1>Books</h1>
 	<div>
-		<form th:object="${addBook}" th:action="@{saveBook}" action="#" method="post">
-		
-			<!-- string title, author, isbn -->
-			<!-- double price -->
-			<!-- int publicationYear -->
+		<form th:object="${addBook}" th:action="@{saveBook}" action="#"
+			method="post">
+
+			
+			
 			<div>
-				<label>Author</label>
+				<label>Author:</label>
 				<input type="text" th:field="*{author}" />
 			</div>
 			<div>
-				<label>Title</label>
+				<label>Title:</label>
 				<input type="text" th:field="*{title}" />
 			</div>
 			<div>
-				<label>ISBN</label>
+				<label>ISBN:</label>
 				<input type="text" th:field="*{isbn}" />
 			</div>
 			<div>
-				<label>Year</label>
-				<input type="number" th:field="*{publicationYear}" />
+				<label>Year:</label>
+				<input type="number"
+					th:field="*{publicationYear}" />
 			</div>
+			
 			<input type="submit" value="Save"></input>
+			
+		</form>
+		<form action="/booklist">
+			<input type="submit" value="Exit">
 		</form>
 	</div>
 </body>
 </html>
+
+<!-- string title, author, isbn -->
+<!-- double price -->
+<!-- int publicationYear -->
