@@ -5,9 +5,10 @@
 <meta charset="UTF-8">
 <title>Booklist</title>
 </head>
-	<h1>Books</h1>
-	<table class="table table-striped">
-	
+<body class="bg-dark">
+	<h1 class="text-warning">Booklist</h1>
+	<table class="table table-sm table-hover table-dark">
+
 		<tr>
 			<th>Author</th>
 			<th>Title</th>
@@ -20,15 +21,15 @@
 			<td th:text="${books.title}"></td>
 			<td th:text="${books.isbn}"></td>
 			<td th:text="${books.publicationYear}"></td>
-			<td><a class="btn btn-outline-danger" th:href="@{/delete/{id}(id=${books.id})}">Delete</a></td>
 			<td><a class="btn btn-outline-info" th:href="@{/editBook/{id}(id=${books.id})}">Edit</a></td>
+			<td><a class="btn btn-outline-danger" th:href="@{/delete/{id}(id=${books.id})}">Delete</a></td>
 		</tr>
 		
 	</table>
 	<a class="btn btn-outline-success" href="/addBook">Add book</a>
-</body>
+	</body>
 </html>
 
 <!-- string title, author, isbn -->
 <!-- double price -->
-<!-- int publicationYear -->
+<!-- int publicationYear --> 

@@ -1,41 +1,53 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
 <meta charset="UTF-8">
 <title>Edit book</title>
 </head>
-<body>
-	<h1>Edit Book</h1>
-	<div>
+<style> .form-control:focus{-webkit-box-shadow: none; box-shadow: none;}</style>
+<body class="bg-dark">
+
+	<h1 class="text-warning">Edit Book</h1>
+	<div class="text-white bg-dark">
 		<form th:object="${editBook}" th:action="@{/saveBook}" action="#"
 			method="post">
 
-			<input type="hidden" id="id" th:field="*{id}" /> <!-- Viedään id -->
+			<input type="hidden" id="id" th:field="*{id}" />
+			<!-- Viedään id -->
 
-			<div>
-				<label>Author:</label>
-				<input type="text" th:field="*{author}" />
-			</div>
-			<div>
-				<label>Title:</label>
-				<input type="text" th:field="*{title}" />
-			</div>
-			<div>
-				<label>ISBN:</label>
-				<input type="text" th:field="*{isbn}" />
-			</div>
-			<div>
-				<label>Year:</label>
-				<input type="number"
-					th:field="*{publicationYear}" />
+			<div class="form-floating">
+				<input th:field="*{author}" type="text" autocomplete="off"
+					class="border-secondary text-white bg-dark form-control" placeholder=" ">
+					<label>Author:</label>
 			</div>
 
-			<input type="submit" value="Save"></input>
+			<div class="form-floating">
+				<input th:field="*{title}" type="text" autocomplete="off"
+					class="border-secondary text-white bg-dark form-control" placeholder=" "> 
+					<label>Title:</label>
+			</div>
+
+			<div class="form-floating">
+				<input th:field="*{isbn}" type="text" autocomplete="off"
+					class="border-secondary text-white bg-dark form-control" placeholder=" "> 
+					<label>ISBN:</label>
+			</div>
+
+			<div class="form-floating">
+				<input th:field="*{publicationYear}" type="number" autocomplete="off"
+					class="border-secondary text-white bg-dark form-control" placeholder=" ">
+					<label>Year:</label>
+			</div>
+			
+			<br />
+			<input class="btn btn-outline-success" type="submit"
+				value="Save"></input>
 
 		</form>
 		<form action="/booklist">
-			<input type="submit" value="Exit">
+			<input class="btn btn-outline-danger" type="submit" value="Exit">
 		</form>
 	</div>
 </body>
