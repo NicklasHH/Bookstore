@@ -15,27 +15,23 @@ public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@Size(min = 1, max = 50, message = "Syötä 1-50 kirjainta")
 	private String author;
-	
+
 	private String title, isbn;
 	private double price;
-	
+
 	private int publicationYear;
-	
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "categoryid")
 	private Category category;
 
 	public Book() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	
-	
 	public Book(String title, String author, int publicationYear, String isbn, double price) {
 		super();
 		this.title = title;
@@ -44,14 +40,13 @@ public class Book {
 		this.isbn = isbn;
 		this.price = price;
 	}
-
-	
 	public Book(String title, String author, int publicationYear, String isbn, double price, Category category) {
 		super();
 		this.title = title;
 		this.author = author;
 		this.publicationYear = publicationYear;
 		this.isbn = isbn;
+		this.price = price;
 		this.category = category;
 	}
 
@@ -103,7 +98,7 @@ public class Book {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public Category getCategory() {
 		return category;
 	}
@@ -117,10 +112,5 @@ public class Book {
 		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", isbn=" + isbn + ", price=" + price
 				+ ", publicationYear=" + publicationYear + ", category=" + category + "]";
 	}
-
-
-	
-	
-	
 
 }

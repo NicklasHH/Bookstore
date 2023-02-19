@@ -17,26 +17,24 @@ public class BookstoreApplication {
 		SpringApplication.run(BookstoreApplication.class, args);
 	}
 
+	@Bean
+	public CommandLineRunner demo(BookRepository bookRepository, CategoryRepository categoryRepository) {
+		return (args) -> {
 
+			// string name
+			categoryRepository.save(new Category("kategoria1"));
+			categoryRepository.save(new Category("kategoria2"));
+			categoryRepository.save(new Category("kategoria3"));
 
-@Bean
-public CommandLineRunner demo(BookRepository bookRepository, CategoryRepository categoryRepository) {return (args) -> {
+			// string title, author, isbn
+			// double price
+			// int publicationYear
 
-	// string name
-	categoryRepository.save(new Category("kategoria1"));
-	categoryRepository.save(new Category("kategoria2"));
-	categoryRepository.save(new Category("kategoria3"));
-	
-	//string title, author, isbn
-	//double price
-	//int publicationYear
-	bookRepository.save(new Book("Kirja1", "Etunimi Sukunimi1", 2001, "12345-6", 11, categoryRepository.findByName("kategoria1").get(0)));
-	bookRepository.save(new Book("Kirja2", "Etunimi Sukunimi2", 2002, "23456-7", 22, categoryRepository.findByName("kategoria1").get(0)));
-	bookRepository.save(new Book("Kirja3", "Etunimi Sukunimi3", 2003, "34567-8", 33));
-	
-	
-};
-}
+			// String title, String author, int publicationYear, String isbn, double price
+			bookRepository.save(new Book("Kirja1", "Etunimi Sukunimi1", 2001, "12345-6", 5555.66, categoryRepository.findByName("kategoria1").get(0)));
+			bookRepository.save(new Book("Kirja2", "Etunimi Sukunimi2", 2002, "23456-7", 22.5, categoryRepository.findByName("kategoria1").get(0)));
+			bookRepository.save(new Book("Kirja3", "Etunimi Sukunimi3", 2003, "34567-8", 33));
 
-
+		};
+	}
 }

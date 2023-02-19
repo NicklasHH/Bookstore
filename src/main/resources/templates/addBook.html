@@ -47,6 +47,12 @@ input::-webkit-inner-spin-button {
 					class="border-secondary text-white bg-dark form-control" placeholder=" ">
 					<label>Year:</label>
 			</div>
+			
+			<div class="form-floating">
+				<input th:field="*{price}" type="number" autocomplete="off" onfocus="this.value=''"
+					class="border-secondary text-white bg-dark form-control" placeholder=" ">
+					<label>Price:</label>
+			</div>
 	
 			<div class="form-floating">
 			 <select id="categories" th:field="*{category}" class=" text-white bg-dark form-control">

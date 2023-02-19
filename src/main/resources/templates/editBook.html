@@ -11,6 +11,11 @@
 	-webkit-box-shadow: none;
 	box-shadow: none;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 </style>
 <body class="bg-dark">
 
@@ -41,6 +46,12 @@
 				<input th:field="*{publicationYear}" type="number" autocomplete="off"
 					class="border-secondary text-white bg-dark form-control" placeholder=" ">
 					<label>Year:</label>
+			</div>
+			
+				<div class="form-floating">
+				<input th:field="*{price}" type="number" autocomplete="off"
+					class="border-secondary text-white bg-dark form-control" placeholder=" ">
+					<label>Price:</label>
 			</div>
 
 			<div class="form-floating">
