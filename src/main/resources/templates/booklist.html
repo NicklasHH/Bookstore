@@ -14,6 +14,7 @@
 			<th>Title</th>
 			<th>ISBN</th>
 			<th>Year</th>
+			<th>Category</th>
 		</tr>
 			
 		<tr th:each="books : ${books}">
@@ -21,12 +22,15 @@
 			<td th:text="${books.title}"></td>
 			<td th:text="${books.isbn}"></td>
 			<td th:text="${books.publicationYear}"></td>
-			<td><a class="btn btn-outline-info" th:href="@{/editBook/{id}(id=${books.id})}">Edit</a></td>
-			<td><a class="btn btn-outline-danger" th:href="@{/delete/{id}(id=${books.id})}">Delete</a></td>
+			<td th:text="${books.category != null} ? ${books.category.name} : 'null value!'">Category</td>
+			<td><a class="btn btn-sm btn-outline-info" th:href="@{/editBook/{id}(id=${books.id})}">Edit</a></td>
+			<td><a class="btn btn-sm btn-outline-danger" th:href="@{/delete/{id}(id=${books.id})}">Delete</a></td>
 		</tr>
 		
 	</table>
-	<a class="btn btn-outline-success" href="/addBook">Add book</a>
+	<a class="btn btn-sm btn-outline-success" href="/addBook">Add book</a>
+	
+	<button class="btn btn-sm btn-outline-warning" onclick=" window.open('http://localhost:8080/h2-console/')"> H2 console</button>
 	</body>
 </html>
 

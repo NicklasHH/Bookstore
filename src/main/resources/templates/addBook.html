@@ -6,12 +6,17 @@
 <meta charset="UTF-8">
 <title>Add new book</title>
 </head>
-<style> .form-control:focus{-webkit-box-shadow: none; box-shadow: none;}</style>
+<style>
+.form-control:focus {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+</style>
 <body class="bg-dark">
+
 	<h1 class="text-warning">Add new book</h1>
 	<div class="text-white bg-dark">
-		<form th:object="${addBook}" th:action="@{saveBook}" action="#"
-			method="post">
+		<form th:object="${addBook}" th:action="@{saveBook}" action="#" method="post">
 
 
 			<div class="form-floating">
@@ -22,13 +27,13 @@
 
 			<div class="form-floating">
 				<input th:field="*{title}" type="text" autocomplete="off"
-					class="border-secondary text-white bg-dark form-control" placeholder=" "> 
+					class="border-secondary text-white bg-dark form-control" placeholder=" ">
 					<label>Title:</label>
 			</div>
 
 			<div class="form-floating">
 				<input th:field="*{isbn}" type="text" autocomplete="off"
-					class="border-secondary text-white bg-dark form-control" placeholder=" "> 
+					class="border-secondary text-white bg-dark form-control" placeholder=" ">
 					<label>ISBN:</label>
 			</div>
 
@@ -37,14 +42,21 @@
 					class="border-secondary text-white bg-dark form-control" placeholder=" ">
 					<label>Year:</label>
 			</div>
-
+	
+			<div class="form-floating">
+			 <select id="categories" th:field="*{category}" class=" text-white bg-dark form-control">
+       			<option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+    		</select>		
+			<label>Category</label>
+			</div>
+	
+	
+	
 			<br />
-			<input class="btn btn-outline-success" type="submit"
-				value="Save"></input>
+			
+			<input class="btn btn-sm btn-outline-success" type="submit" value="Save"></input>
+				<a class="btn btn-sm btn-outline-danger" href="/booklist">Exit</a>
 
-		</form>
-		<form action="/booklist">
-			<input class="btn btn-outline-danger" type="submit" value="Exit">
 		</form>
 	</div>
 </body>
