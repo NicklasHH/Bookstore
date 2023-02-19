@@ -11,11 +11,6 @@
 	-webkit-box-shadow: none;
 	box-shadow: none;
 }
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
 </style>
 <body class="bg-dark">
 
@@ -25,9 +20,8 @@ input::-webkit-inner-spin-button {
 
 			<div class="form-floating">
 				<input th:field="*{author}" type="text" autocomplete="off"
-					class="border-secondary text-white bg-dark form-control" placeholder=" ">	
+					class="border-secondary text-white bg-dark form-control" placeholder=" ">
 					<label>Author:</label>
-					<div th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Error</div>
 			</div>
 
 			<div class="form-floating">
@@ -43,7 +37,7 @@ input::-webkit-inner-spin-button {
 			</div>
 
 			<div class="form-floating">
-				<input th:field="*{publicationYear}" type="number" autocomplete="off" onfocus="this.value=''"
+				<input th:field="*{publicationYear}" type="number" autocomplete="off"
 					class="border-secondary text-white bg-dark form-control" placeholder=" ">
 					<label>Year:</label>
 			</div>
@@ -54,11 +48,13 @@ input::-webkit-inner-spin-button {
     		</select>		
 			<label>Category</label>
 			</div>
-				
+	
+	
 			<br />
 			
 			<input class="btn btn-sm btn-outline-success" type="submit" value="Save"></input>
 				<a class="btn btn-sm btn-outline-danger" href="/booklist">Exit</a>
+
 		</form>
 	</div>
 </body>
