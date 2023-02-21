@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -48,12 +49,14 @@ public class BookController {
 	}
 
 	@PostMapping("saveBook")
-	public String saveBook(@Valid Book book, BindingResult bindingResult, Model model) {
+	public String saveBook(@Valid @ModelAttribute("addBook") Book book, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			System.out.println("some error happened");
 			return "addBook";
 		}
+
 		bookRepository.save(book);
 		return "redirect:booklist";
+
 	}
 }

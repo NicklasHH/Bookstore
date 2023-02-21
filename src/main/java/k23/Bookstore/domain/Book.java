@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Book {
@@ -16,7 +16,7 @@ public class Book {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Size(min = 1, max = 50, message = "Syötä 1-50 kirjainta")
+	@NotBlank(message = "Nimi vaaditaan")
 	private String author;
 
 	private String title, isbn;
@@ -40,6 +40,7 @@ public class Book {
 		this.isbn = isbn;
 		this.price = price;
 	}
+
 	public Book(String title, String author, int publicationYear, String isbn, double price, Category category) {
 		super();
 		this.title = title;
@@ -49,7 +50,6 @@ public class Book {
 		this.price = price;
 		this.category = category;
 	}
-
 
 	public String getTitle() {
 		return title;
