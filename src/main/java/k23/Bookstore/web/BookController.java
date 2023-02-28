@@ -73,16 +73,15 @@ public class BookController {
 
 	}
 
-	// rest osio
-// hae ja palauta kirjat
+	// REST OSIO
+	// hae ja näytä kirjat
 	@GetMapping("/books")
 	public @ResponseBody List<Book> showRestBook() {
 		Log.info("showRestOwners");
 		return (List<Book>) bookRepository.findAll();
 	}
 
-
-//hae id perusteella 1 kirja
+	//hae id perusteella 1 kirja
 	@GetMapping("/book{id}")
 	public @ResponseBody Optional<Book> findBookRest(@PathVariable("id") Long id) {
 		return bookRepository.findById(id);
