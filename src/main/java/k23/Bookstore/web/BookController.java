@@ -51,7 +51,7 @@ public class BookController {
 	@PostMapping("saveBook")
 	public String saveBook(@Valid @ModelAttribute("addBook") Book book, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
-			System.out.println("some error happened");
+			System.out.println("erroria pukkas");
 			return "addBook";
 		}
 
