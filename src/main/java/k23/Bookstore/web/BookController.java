@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -41,6 +42,7 @@ public class BookController {
 		return "booklist";
 	}
 
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("addBook")
 	public String addBook(Model model) {
 		model.addAttribute("addBook", new Book());
@@ -48,12 +50,14 @@ public class BookController {
 		return "addBook";
 	}
 
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("delete/{id}")
 	public String deleteBook(@PathVariable("id") Long id) {
 		bookRepository.deleteById(id);
 		return "redirect:/booklist";
 	}
 
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("/editBook/{id}")
 	public String editBook(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("editBook", bookRepository.findById(id));
@@ -61,6 +65,7 @@ public class BookController {
 		return "editBook";
 	}
 
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@PostMapping("saveBook")
 	public String saveBook(@Valid @ModelAttribute("addBook") Book book, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {

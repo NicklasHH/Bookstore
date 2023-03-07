@@ -1,14 +1,35 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"> 
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
-<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
+
 <meta charset="UTF-8">
 <title>Booklist</title>
 </head>
 <body class="bg-dark">
+<!-- Otsikko -->
 	<h1 class="text-warning">Booklist</h1>
-	<table class="table table-sm table-hover table-dark">
 
+
+<!-- Tervetuloa -->
+	<div class="position-absolute top-0 start-50 translate-middle-x">
+		<a class="text-warning">Welcome [[${#httpServletRequest.remoteUser}]]!</a>
+	</div>
+
+<!-- Nappulat oikeella -->
+	<div class="position-absolute top-0 end-0">
+		<button class="btn btn-sm btn-outline-warning"
+			onclick=" window.open('http://localhost:8080/h2-console/')">
+			H2 console</button><!-- console -->
+
+		<a sec:authorize="hasAnyAuthority('ADMIN', 'USER')"
+			class="btn btn-sm btn-outline-danger" href="logout">Logout</a><!-- logout -->
+	</div>
+
+
+	<table class="table table-sm table-hover table-dark">
 		<tr>
 			<th>Author</th>
 			<th>Title</th>
@@ -16,25 +37,34 @@
 			<th>Year</th>
 			<th>Price</th>
 			<th>Category</th>
+			<th></th>
+			<th></th>
 		</tr>
-			
+
 		<tr th:each="books : ${books}">
 			<td th:text="${books.author}"></td>
 			<td th:text="${books.title}"></td>
 			<td th:text="${books.isbn}"></td>
 			<td th:text="${books.publicationYear}"></td>
 			<td th:text="${books.price}+€"></td>
-			<td th:text="${books.category != null} ? ${books.category.name} : 'Ei kategoriaa!'">Category</td>
-			<td><a class="btn btn-sm btn-outline-info" th:href="@{/editBook/{id}(id=${books.id})}">Edit</a></td>
-			<td><a class="btn btn-sm btn-outline-danger" th:href="@{/delete/{id}(id=${books.id})}">Delete</a></td>
+			<td
+				th:text="${books.category != null} ? ${books.category.name} : 'Ei kategoriaa!'">Category</td>
+			<td><a sec:authorize="hasAuthority('ADMIN')"
+				class="btn btn-sm btn-outline-info"
+				th:href="@{/editBook/{id}(id=${books.id})}">Edit</a></td>
+			<td><a sec:authorize="hasAuthority('ADMIN')"
+				class="btn btn-sm btn-outline-danger"
+				th:href="@{/delete/{id}(id=${books.id})}">Delete</a></td>
 		</tr>
-		
+
 	</table>
-	<a class="btn btn-sm btn-outline-success" href="/addBook">Add book</a>
-	 <button class="btn btn-sm btn-outline-warning" onclick=" window.open('http://localhost:8080/h2-console/')"> H2 console</button>
-	</body>
+	<a sec:authorize="hasAuthority('ADMIN')"
+		class="btn btn-sm btn-outline-success" href="/addBook">Add book</a>
+
+
+</body>
 </html>
 
 <!-- string title, author, isbn -->
 <!-- double price -->
-<!-- int publicationYear --> 
+<!-- int publicationYear -->
