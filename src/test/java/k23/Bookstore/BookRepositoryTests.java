@@ -25,7 +25,7 @@ class BookRepositoryTests {
 
 	@Test
 	public void saveBook() {
-		Book book = new Book();
+		Book book = new Book("Kirja1", "Etunimi Sukunimi1", 2001, "12345-6", 11.1);
 		bookRepository.save(book);
 		assertNotEquals(book.getId(), null);
 	}
